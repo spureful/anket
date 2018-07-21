@@ -1,0 +1,188 @@
+/*
+Stylus variables are information about icon's compiled state, stored under its original file name
+
+.icon-home {
+  width: $icon_home_width;
+}
+
+The large array-like variables contain all information about a single icon
+$icon_home = x y offset_x offset_y width height total_width total_height image_path;
+
+At the bottom of this section, we provide information about the spritesheet itself
+$spritesheet = width height image $spritesheet_sprites;
+*/
+$checkbox_box_name = 'checkbox-box';
+$checkbox_box_x = 34px;
+$checkbox_box_y = 0px;
+$checkbox_box_offset_x = -34px;
+$checkbox_box_offset_y = 0px;
+$checkbox_box_width = 19px;
+$checkbox_box_height = 18px;
+$checkbox_box_total_width = 53px;
+$checkbox_box_total_height = 61px;
+$checkbox_box_image = '../images/sprites/anket-sprite.png';
+$checkbox_box = 34px 0px -34px 0px 19px 18px 53px 61px '../images/sprites/anket-sprite.png' 'checkbox-box';
+$checkbox_checked_name = 'checkbox-checked';
+$checkbox_checked_x = 0px;
+$checkbox_checked_y = 34px;
+$checkbox_checked_offset_x = 0px;
+$checkbox_checked_offset_y = -34px;
+$checkbox_checked_width = 21px;
+$checkbox_checked_height = 27px;
+$checkbox_checked_total_width = 53px;
+$checkbox_checked_total_height = 61px;
+$checkbox_checked_image = '../images/sprites/anket-sprite.png';
+$checkbox_checked = 0px 34px 0px -34px 21px 27px 53px 61px '../images/sprites/anket-sprite.png' 'checkbox-checked';
+$js_skills_arrow_name = 'js-skills-arrow';
+$js_skills_arrow_x = 34px;
+$js_skills_arrow_y = 26px;
+$js_skills_arrow_offset_x = -34px;
+$js_skills_arrow_offset_y = -26px;
+$js_skills_arrow_width = 17px;
+$js_skills_arrow_height = 14px;
+$js_skills_arrow_total_width = 53px;
+$js_skills_arrow_total_height = 61px;
+$js_skills_arrow_image = '../images/sprites/anket-sprite.png';
+$js_skills_arrow = 34px 26px -34px -26px 17px 14px 53px 61px '../images/sprites/anket-sprite.png' 'js-skills-arrow';
+$plans_radio_checked_name = 'plans-radio-checked';
+$plans_radio_checked_x = 34px;
+$plans_radio_checked_y = 48px;
+$plans_radio_checked_offset_x = -34px;
+$plans_radio_checked_offset_y = -48px;
+$plans_radio_checked_width = 12px;
+$plans_radio_checked_height = 12px;
+$plans_radio_checked_total_width = 53px;
+$plans_radio_checked_total_height = 61px;
+$plans_radio_checked_image = '../images/sprites/anket-sprite.png';
+$plans_radio_checked = 34px 48px -34px -48px 12px 12px 53px 61px '../images/sprites/anket-sprite.png' 'plans-radio-checked';
+$plans_radio_name = 'plans-radio';
+$plans_radio_x = 0px;
+$plans_radio_y = 0px;
+$plans_radio_offset_x = 0px;
+$plans_radio_offset_y = 0px;
+$plans_radio_width = 26px;
+$plans_radio_height = 26px;
+$plans_radio_total_width = 53px;
+$plans_radio_total_height = 61px;
+$plans_radio_image = '../images/sprites/anket-sprite.png';
+$plans_radio = 0px 0px 0px 0px 26px 26px 53px 61px '../images/sprites/anket-sprite.png' 'plans-radio';
+$sp_anket_sprite_width = 53px;
+$sp_anket_sprite_height = 61px;
+$sp_anket_sprite_image = '../images/sprites/anket-sprite.png';
+$sp_anket_sprite_sprites = $checkbox_box $checkbox_checked $js_skills_arrow $plans_radio_checked $plans_radio;
+$sp_anket_sprite = 53px 61px '../images/sprites/anket-sprite.png' $sp_anket_sprite_sprites;
+
+// These "retina group" variables are mappings for the naming and pairing of normal and retina sprites.
+
+// The list formatted variables are intended for mixins like `retinaSprite` and `retinaSprites`.
+
+
+/*
+The provided mixins are intended to be used with the array-like variables
+
+.icon-home {
+  spriteWidth($icon_home)
+}
+
+.icon-email {
+  sprite($icon_email)
+}
+
+Example usage in HTML:
+
+`display: block` sprite:
+<div class="icon-home"></div>
+
+To change `display` (e.g. `display: inline-block;`), we suggest using a common CSS class:
+
+// CSS
+.icon {
+  display: inline-block;
+}
+
+// HTML
+<i class="icon icon-home"></i>
+*/
+spriteWidth($sprite) {
+  width: $sprite[4];
+}
+
+spriteHeight($sprite) {
+  height: $sprite[5];
+}
+
+spritePosition($sprite) {
+  background-position: $sprite[2] $sprite[3];
+}
+
+spriteImage($sprite) {
+  background-image: url($sprite[8]);
+}
+
+sprite($sprite) {
+  spriteImage($sprite)
+  spritePosition($sprite)
+  spriteWidth($sprite)
+  spriteHeight($sprite)
+}
+
+
+// The `retinaSprite` mixin sets up rules and a media query for a sprite/retina sprite.
+// It should be used with a "retina group" variable.
+//
+// The media query is from CSS Tricks: https://css-tricks.com/snippets/css/retina-display-media-query/
+//
+// $icon_home_group = 'icon-home' $icon_home $icon_home_2x;
+//
+// .icon-home {
+//     retinaSprite($icon_home_group)
+// }
+
+
+spriteBackgroundSize($sprite) {
+	background-size $sprite[6] $sprite[7]
+}
+
+retinaSprite($retina_group) {
+	$normal_sprite = $retina_group[1]
+	$retina_sprite = $retina_group[2]
+	sprite($normal_sprite)
+
+	@media (-webkit-min-device-pixel-ratio: 2),
+				 (min-resolution: 192dpi) {
+		spriteImage($retina_sprite)
+		spriteBackgroundSize($normal_sprite)
+	}
+}
+
+/*
+The `sprites` mixin generates identical output to the CSS template
+  but can be overridden inside of Stylus
+
+This must be run when you have at least 2 sprites.
+  If run with a single sprite, then there will be reference errors.
+
+sprites($spritesheet_sprites);
+*/
+sprites($sprites) {
+  for $sprite in $sprites {
+    $sprite_name = $sprite[9];
+    .{$sprite_name} {
+      sprite($sprite);
+    }
+  }
+}
+
+// The `retinaSprites` mixin generates a CSS rule and media query for retina groups
+// This yields the same output as CSS retina template but can be overridden in Stylus
+//
+// retinaSprites($retina_groups)
+
+retinaSprites($retina_groups) {
+	for $retina_group in $retina_groups {
+		$sprite_name = $retina_group[0];
+		.{$sprite_name} {
+			retinaSprite $retina_group
+		}
+	}
+}

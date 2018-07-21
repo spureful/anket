@@ -1,0 +1,54 @@
+.plans
+	margin-bottom 86px
+	
+.content_plans
+	margin-bottom 10px
+	
+.plans__radio-block	
+	display flex
+
+.plans__radio-item
+	display flex
+	margin-right 20px
+	
+.plans__radio
+	display none
+	&:checked + .plans__radio-custom:before
+		display block
+		
+	
+.plans__radio-custom
+	display block
+	width 26px
+	height 26px
+	border-radius 50%
+	
+	background-image url('../../img/sprite.png')
+	background-position -92px -5px
+	
+	position relative
+	
+	margin-right 7px
+	
+	&:before
+		content ''
+		display none
+		width 12px
+		height 12px
+		border-radius 50%
+		
+		background-image url('../../img/sprite.png')
+		background-position -128px -5px
+		
+		position absolute
+		top 50%
+		left 50%
+		transform translate(-50%, -50%)
+		
+	
+.plans__radio-title
+	font-size 20px
+	font-weight 700
+	color #000
+	
+	align-self center

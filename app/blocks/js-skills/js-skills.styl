@@ -1,0 +1,71 @@
+.js-skills
+	margin-bottom 35px
+
+.title_js-skills 
+	margin-bottom 32px
+	
+
+.js-skills__line
+	width 100%
+	min-height: 30px 
+	border-top 3px solid brown-color
+	border-left 3px solid brown-color
+	border-right 3px solid brown-color
+	
+	position relative
+	
+	&:before, &:after
+		content ''
+		display block
+		width 3px
+		height 13px
+		background-color brown-color
+		
+		position absolute
+		top 0
+		
+	&:before
+		left 146px
+	&:after 
+		left 372px
+		
+.js-skills__arrow
+	
+	width 17px
+	height 14px
+	
+	background-image url('../../img/sprite.png')
+	background-position -65px -5px
+	
+	transition 0.7s
+	
+	cursor pointer
+
+	position absolute
+	left 365px
+	top -22px
+	
+	
+		
+.js-skills__list
+	padding-top 5px
+	
+	display flex
+	justify-content space-between
+	
+.js-skills__item 
+	font-size 13px
+	color brown-color
+	font-weight 700
+	
+	width 25%
+	
+	position relative
+	
+	&:first-child
+		width 18%
+	&:nth-child(2)
+		width 28%
+	&:last-child
+		text-align right
+		

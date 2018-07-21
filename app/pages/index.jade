@@ -1,0 +1,15 @@
+extends /blocks/layout-default/layout-default
+
+block head
+	- var pageTitle = 'Анкета ';
+
+block content
+	.wrapper
+		.container
+			include /blocks/header/header.jade
+			include /blocks/profile/profile.jade
+			include /blocks/checkboxes/checkboxes.jade
+			include /blocks/js-skills/js-skills.jade
+			include /blocks/about/about.jade
+			include /blocks/plans/plans.jade
+			include /blocks/date/date.jade
