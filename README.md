@@ -17,7 +17,7 @@ git clone git@github.com:CSSSR/csssr-project-template.git new-project && cd new-
 npm i
 ```
 
-### Cкачать папку "dist" из  <a href="https://github.com/spureful/anket" данного репозитория </a> и вставить ее в папку с проектом
+### Cкачать папку "dist" из  <a href="https://github.com/spureful/anket"> данного репозитория </a> и вставить ее в папку с проектом
 
 ### Запустить шаблон
 ```
